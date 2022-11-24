@@ -8,14 +8,22 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,7 +37,15 @@ public class Asesor extends javax.swing.JFrame {
     
     public Asesor() {
         this.setContentPane(fondo);
-        initComponents();  
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new Login.CustomeBorder(), 
+            new EmptyBorder(new Insets(8,10,4,4))));
+        initComponents(); 
+        
+        txtApellido.setOpaque(false);
+        txtTelefono.setOpaque(false);
+        txtCodigo.setOpaque(false);
+        txtNombre.setOpaque(false);
     }
     
     private int bandera = 0;
@@ -74,6 +90,8 @@ public class Asesor extends javax.swing.JFrame {
         tbl2.getTableHeader().setOpaque(false);
     }
    
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -633,6 +651,8 @@ public class Asesor extends javax.swing.JFrame {
         }
     }
 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;

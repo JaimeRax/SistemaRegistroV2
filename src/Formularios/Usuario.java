@@ -3,9 +3,13 @@ package Formularios;
 
 import Clases.Conectar;
 import java.awt.Graphics;
+import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -16,8 +20,15 @@ public class Usuario extends javax.swing.JFrame {
    
     ImagenFondo fondo = new ImagenFondo();
     public Usuario() {
-        this.setContentPane(fondo); 
+        this.setContentPane(fondo);
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new Login.CustomeBorder(), 
+            new EmptyBorder(new Insets(8,10,4,4))));
         initComponents();
+        txtCodigo.setOpaque(false);
+        txtNombre.setOpaque(false);
+        txtClave1.setOpaque(false);
+        txtClave2.setOpaque(false);
     }
     private int bandera = 0;
       public class ImagenFondo extends JPanel{

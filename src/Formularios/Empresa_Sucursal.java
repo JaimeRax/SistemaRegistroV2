@@ -9,14 +9,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +34,15 @@ public class Empresa_Sucursal extends javax.swing.JFrame {
     ImagenFondo fondo = new ImagenFondo();
     public Empresa_Sucursal() {
         this.setContentPane(fondo);
-        initComponents();   
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new Login.CustomeBorder(), 
+            new EmptyBorder(new Insets(8,10,4,4))));
+        initComponents(); 
+        txtCodigo.setOpaque(false);
+        txtNombreEmpresa.setOpaque(false);
+        txtCodigoSucursal.setOpaque(false);
+        txtNombreSucursal.setOpaque(false);
+        txtSucursalEmpresa.setOpaque(false);
     }
     
     public class ImagenFondo extends JPanel{

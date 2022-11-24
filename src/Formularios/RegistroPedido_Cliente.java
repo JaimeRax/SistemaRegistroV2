@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,10 +32,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -47,8 +51,25 @@ public class RegistroPedido_Cliente extends javax.swing.JFrame {
     ImagenFondo fondo = new ImagenFondo();
     
     public RegistroPedido_Cliente() {
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new Login.CustomeBorder(), 
+            new EmptyBorder(new Insets(8,10,4,4))));
         this.setContentPane(fondo);
         initComponents();
+        txtApellido.setOpaque(false);
+        txtTelefono.setOpaque(false);
+        txtCodigo.setOpaque(false);
+        txtNombre.setOpaque(false);
+        txtDireccion.setOpaque(false);
+        txtApellido2.setOpaque(false);
+        txtTelefono2.setOpaque(false);
+        txtLugar.setOpaque(false);
+        txtNombre2.setOpaque(false);
+        txtRegistro.setOpaque(false);
+        txtFecha.setOpaque(false);
+        txtidCliente.setOpaque(false);
+        txtBuscarR.setOpaque(false);
+        txtTelefonoVendedor.setOpaque(false);
         
     }
     private int bandera = 0;

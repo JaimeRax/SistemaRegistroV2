@@ -2,10 +2,19 @@
 package Formularios;
 
 import Clases.Conectar;
+import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -16,13 +25,23 @@ public class Login extends javax.swing.JFrame {
     ImagenFondo img = new ImagenFondo();
     public Login() {
         this.setContentPane(img);
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new CustomeBorder(), 
+            new EmptyBorder(new Insets(4,8,4,4))));
+        UIManager.put("PasswordField.border", BorderFactory.createCompoundBorder(
+            new CustomeBorder(), 
+            new EmptyBorder(new Insets(4,8,4,4))));
         initComponents();
         txtNombre.setOpaque(false);
         txtClave.setOpaque(false);
+        
     }
     
+    
+    
+    
     public static String NombreLogin;
-   public static String ClaveLogin;
+    public static String ClaveLogin;
 
     public String getNombreLogin() {
         return NombreLogin;
@@ -90,7 +109,6 @@ public class Login extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Roboto Condensed", 0, 28)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setText(" ");
-        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(239, 239, 239), 1, true));
         txtNombre.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 490, 60));
 
@@ -101,7 +119,6 @@ public class Login extends javax.swing.JFrame {
 
         txtClave.setFont(new java.awt.Font("Roboto Condensed", 0, 28)); // NOI18N
         txtClave.setForeground(new java.awt.Color(255, 255, 255));
-        txtClave.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(239, 239, 239), 1, true));
         txtClave.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 490, 60));
 
@@ -166,6 +183,21 @@ public class Login extends javax.swing.JFrame {
         conn.cerrarConexion();
     }//GEN-LAST:event_btnIngresarActionPerformed
    
+    
+    @SuppressWarnings("serial")
+    public static class CustomeBorder extends AbstractBorder{
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        super.paintBorder(c, g, x, y, width, height);
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.setPaint(null);//buscar informacion sobre setPaint()
+        Shape shape = new RoundRectangle2D.Float(0, 0, c.getWidth()-1, c.getHeight()-1,20, 20);
+        g2d.draw(shape);  
+    }
+}
+    
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

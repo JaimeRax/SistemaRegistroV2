@@ -20,6 +20,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,10 +32,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,7 +52,14 @@ public class Consulta extends javax.swing.JFrame {
     ImagenFondo fondo = new ImagenFondo();
     public Consulta() {
        this.setContentPane(fondo);
+       UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+            new Login.CustomeBorder(), 
+            new EmptyBorder(new Insets(8,10,4,4))));
         initComponents();
+        txtNombre.setOpaque(false);
+        txtAsesor.setOpaque(false);
+        txtTelefono.setOpaque(false);
+        txtAsesorTel.setOpaque(false);
         
     }
     
@@ -271,6 +282,7 @@ public class Consulta extends javax.swing.JFrame {
 
         txtPedido.setColumns(20);
         txtPedido.setRows(5);
+        txtPedido.setOpaque(false);
         jScrollPane2.setViewportView(txtPedido);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 430, 400, 90));
